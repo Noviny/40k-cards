@@ -11,7 +11,7 @@ const burstCannon = {
   line: '18" assault 4 5 0 1',
 };
 
-const Fireblade: UnitCardDetails = {
+const Fireblade = {
   name: "Cadre Fireblade",
   keywords: ["character", "infantry"],
   weapons: [
@@ -40,7 +40,7 @@ const Fireblade: UnitCardDetails = {
   points: 45,
 };
 
-const TaShi: UnitCardDetails = {
+const TaShi = {
   name: "Ta'Shi",
   keywords: ["battlesuit", "character", "fly", "jet pack", "warlord"],
   aggressiveStats: {
@@ -81,7 +81,7 @@ const droneStats = {
   defensiveStats: { T: "4", W: "1", Ld: "6", Sv: "4+" },
 };
 
-const CrisisCommander: UnitCardDetails = {
+const CrisisCommander = {
   name: "Crisis Commander",
   keywords: ["battlesuit", "character", "fly", "jet pack"],
   abilities: [],
@@ -92,7 +92,7 @@ const CrisisCommander: UnitCardDetails = {
   points: 135,
 };
 
-const markerDrones: UnitCardDetails = {
+const markerDrones = {
   name: "Marker Drones",
   gear: "card for all marker drones",
   abilities: [
@@ -127,9 +127,7 @@ const fireWarrior = {
   defensiveStats: { T: "3", W: "1", Ld: "6/7", Sv: "4+" },
 };
 
-const getBreachers = (
-  overwrites: Partial<UnitCardDetails> = {}
-): UnitCardDetails => ({
+const getBreachers = (overwrites: Partial<UnitCardDetails> = {}) => ({
   name: "breachers",
   ...fireWarrior,
   weapons: [
@@ -151,9 +149,7 @@ const getBreachers = (
   ...overwrites,
 });
 
-const getStrikeTeam = (
-  overwrites: Partial<UnitCardDetails>
-): UnitCardDetails => ({
+const getStrikeTeam = (overwrites: Partial<UnitCardDetails>) => ({
   ...fireWarrior,
   name: "strike team",
   weapons: [
@@ -189,7 +185,7 @@ const riptideAbilities = [
   { name: "nova reactor", details: "see rule card" },
 ];
 
-const riptideAIA: UnitCardDetails = {
+const riptideAIA = {
   name: "AIA Riptide",
   gear: "2x SMS, Amplified Ion Accelerator",
   points: 319,
@@ -208,7 +204,7 @@ const riptideAIA: UnitCardDetails = {
   ],
 };
 
-const riptideHBC: UnitCardDetails = {
+const riptideHBC = {
   name: "HBC Riptide",
   gear: "2x SMS, Heavy Burst Cannon",
   points: 309,
@@ -235,7 +231,7 @@ const riptideHBC: UnitCardDetails = {
   ],
 };
 
-const shieldedMissileDrones: UnitCardDetails = {
+const shieldedMissileDrones = {
   name: "Shielded Missile Drone",
   points: 0,
   keywords: ["fly"],
@@ -248,9 +244,7 @@ const shieldedMissileDrones: UnitCardDetails = {
   weapons: [{ name: "Missile pod", line: '36" Assault 2 7 -1 D3' }],
 };
 
-const getStealthSuit = (
-  overwrites: Partial<UnitCardDetails>
-): UnitCardDetails => ({
+const getStealthSuit = (overwrites: Partial<UnitCardDetails>) => ({
   keywords: ["battlesuit", "infantry", "fly", "jet pack"],
   points: 156,
   aggressiveStats: { M: '8"', WS: "5+", BS: "4+", S: "4", A: "2/3" },
@@ -272,7 +266,7 @@ const getStealthSuit = (
   ...overwrites,
 });
 
-const crisisTeam: UnitCardDetails = {
+const crisisTeam = {
   keywords: ["battlesuit", "fly", "jet pack"],
   points: 245,
   aggressiveStats: { M: '8"', WS: "4+", BS: "3+", S: "5", A: "2/3" },
@@ -287,7 +281,7 @@ const crisisTeam: UnitCardDetails = {
     },
   ],
 };
-const broadsides: UnitCardDetails = {
+const broadsides = {
   keywords: ["battlesuit"],
   points: 250,
   aggressiveStats: { M: '5"', WS: "5+", BS: "4+", S: "5", A: "2/3" },
@@ -305,7 +299,7 @@ const broadsides: UnitCardDetails = {
   ],
 };
 
-const gunDrone: UnitCardDetails = {
+const gunDrone = {
   ...droneStats,
   name: "Gun Drones",
   gear: "2x on each devilfish",
@@ -313,7 +307,7 @@ const gunDrone: UnitCardDetails = {
   weapons: [{ name: "pulse carbine", line: "assault 2 5 0 1" }],
 };
 
-const devilfish: UnitCardDetails = {
+const devilfish = {
   name: "Devilfish",
   gear: "2 equipped w/ burst cannon and 2 gun drones",
   points: 180,
@@ -333,7 +327,7 @@ const devilfish: UnitCardDetails = {
   weapons: [burstCannon],
 };
 
-export const stratagems: StratagemInfo[] = [
+export const stratagems = [
   {
     name: "Aerial Targeting",
     CP: "1",
