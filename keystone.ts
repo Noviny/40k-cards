@@ -7,15 +7,6 @@ import {
   virtual,
 } from "@keystone-6/core/fields";
 import { Lists } from ".keystone/types";
-import { Role } from "./types";
-
-const Post: Lists.Post = list({
-  fields: {
-    title: text({ validation: { isRequired: true } }),
-    slug: text({ isIndexed: "unique", isFilterable: true }),
-    content: text(),
-  },
-});
 
 const WeaponProfile: Lists.WeaponProfile = list({
   fields: {
