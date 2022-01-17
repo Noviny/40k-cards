@@ -7,7 +7,7 @@
     "next:build": "next build",
     "next:start": "next start",
     "lint": "next lint",
-    "postinstall": "keystone postinstall",
+    "postinstall": "keystone postinstall && ts-gql build",
     "keystone:dev": "keystone dev",
     "build": "keystone build && keystone prisma migrate deploy",
     "start": "keystone start"
