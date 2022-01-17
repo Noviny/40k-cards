@@ -14,9 +14,9 @@ const query = gql`
 ` as import("../__generated__/ts-gql/HomePage").type;
 
 const Home: NextPage = () => {
-  const { data, error } = useQuery(query);
+  const { data, error, ...rest } = useQuery(query);
 
-  console.log({ data, error });
+  console.log({ data, error, rest });
 
   return (
     <div>
