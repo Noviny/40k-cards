@@ -8,7 +8,7 @@
     "lint": "next lint",
     "postinstall": "keystone postinstall",
     "keystone:dev": "keystone dev",
-    "keystone:build": "keystone build",
+    "keystone:build": "keystone build && keystone prisma migrate deploy",
     "keystone:start": "keystone start"
   },
   "dependencies": {
