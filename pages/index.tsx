@@ -1,24 +1,23 @@
-import type { InferGetStaticPropsType, NextPage } from "next";
+import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { query } from ".keystone/api";
-import { Lists } from ".keystone/types";
+import { gql } from "@ts-gql/tag";
+import { useQuery } from "@ts-gql/apollo";
 
-export async function getStaticProps() {
-  const units = (await query.Unit.findMany({
-    query: `name points`,
-  })) as Array<Lists.Unit.Item>;
+const query = gql`
+  query HomePage {
+    users {
+      id
+      name
+    }
+  }
+` as import("../__generated__/ts-gql/HomePage").type;
 
-  return {
-    props: {
-      units,
-    },
-  };
-}
+const Home: NextPage = () => {
+  const { data, error } = useQuery(query);
 
-const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  units,
-}) => {
+  console.log({ data, error });
+
   return (
     <div>
       <Head>
@@ -31,13 +30,6 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <h1>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-        <ul>
-          {units.map(({ name, points }) => (
-            <li key={name}>
-              {name} {points}
-            </li>
-          ))}
-        </ul>
         <p>
           Get started by editing <code>pages/index.tsx</code>
         </p>

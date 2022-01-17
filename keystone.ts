@@ -145,27 +145,20 @@ const User = list({
   },
 });
 
-const keystone = IS_IN_NEXT
-  ? config({
-      db: { provider: "sqlite", useMigrations: true, url: "app.db" },
-      experimental: {
-        generateNextGraphqlAPI: true,
-        generateNodeAPI: true,
-      },
-      lists: { WeaponProfile, UnitStat, Unit, Rule, Tag, User },
-      server: { port: PORT },
-    })
-  : withAuth(
-      config({
-        db: { provider: "postgresql", useMigrations: true, url: DATABASE_URL },
-        experimental: {
-          generateNextGraphqlAPI: true,
-          generateNodeAPI: true,
-        },
-        lists: { WeaponProfile, UnitStat, Unit, Rule, Tag, User },
-        server: { port: PORT },
-        session,
-      })
-    );
+const keystone = withAuth(
+  config({
+    db: { provider: "postgresql", useMigrations: true, url: DATABASE_URL },
+    experimental: {
+      generateNextGraphqlAPI: true,
+      generateNodeAPI: true,
+    },
+    lists: { WeaponProfile, UnitStat, Unit, Rule, Tag, User },
+    server: {
+      port: PORT,
+      cors: { origin: ["https://40k-cards.vercel.app/"], credentials: true },
+    },
+    session,
+  })
+);
 
 export default keystone;

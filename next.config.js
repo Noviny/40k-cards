@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
-const { withKeystone } = require("@keystone-6/core/next");
-module.exports = withKeystone({
+
+const { withTsGql } = require("@ts-gql/next");
+
+module.exports = withTsGql({
   reactStrictMode: true,
 });
