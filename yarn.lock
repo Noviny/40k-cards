@@ -1229,6 +1229,15 @@
     "@types/debug" "4.1.7"
     ms "2.1.3"
 
+"@prisma/debug@3.8.1":
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/@prisma/debug/-/debug-3.8.1.tgz#3c6717d6e0501651709714774ea6d90127c6a2d3"
+  integrity sha512-ft4VPTYME1UBJ7trfrBuF2w9jX1ipDy786T9fAEskNGb+y26gPDqz5fiEWc2kgHNeVdz/qTI/V3wXILRyEcgxQ==
+  dependencies:
+    "@types/debug" "4.1.7"
+    ms "2.1.3"
+    strip-ansi "6.0.1"
+
 "@prisma/engine-core@3.6.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@prisma/engine-core/-/engine-core-3.6.0.tgz#b3ad37974e4dba499c4e4e0fef84e55dfb1463b3"
@@ -1286,6 +1295,16 @@
   integrity sha512-/mwQvnTbuiZjVmLtCBuOK+Tz2+HLYjqOCCvsEH0LMxHQBtzVSG4/LhVHMYxs/4du8TdgpnguMh4wtRWJ9Ow/DQ==
   dependencies:
     "@prisma/debug" "3.6.0"
+    "@types/cross-spawn" "6.0.2"
+    chalk "4.1.2"
+    cross-spawn "7.0.3"
+
+"@prisma/generator-helper@^3.8.1":
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/@prisma/generator-helper/-/generator-helper-3.8.1.tgz#eb1dcc8382faa17c784a9d0e0d79fd207a222aa4"
+  integrity sha512-3zSy+XTEjmjLj6NO+/YPN1Cu7or3xA11TOoOnLRJ9G4pTT67RJXjK0L9Xy5n+3I0Xlb7xrWCgo8MvQQLMWzxPA==
+  dependencies:
+    "@prisma/debug" "3.8.1"
     "@types/cross-spawn" "6.0.2"
     chalk "4.1.2"
     cross-spawn "7.0.3"
@@ -3884,7 +3903,7 @@ graphql-upload@^12.0.0:
     isobject "^4.0.0"
     object-path "^0.11.5"
 
-graphql@^15.3.0, graphql@^15.8.0:
+graphql@15, graphql@^15.3.0, graphql@^15.8.0:
   version "15.8.0"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.8.0.tgz#33410e96b012fa3bdb1091cc99a94769db212b38"
   integrity sha512-5gghUc24tP9HRznNpV2+FIoq3xKkj5dTQqf4v0CpdPbFVwFkWoxOM+o+2OC9ZSvjEMTjfmG9QT+gcvggTwW1zw==
