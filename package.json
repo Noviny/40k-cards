@@ -3,13 +3,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "next:build": "next build",
+    "next:start": "next start",
     "lint": "next lint",
     "postinstall": "keystone postinstall",
     "keystone:dev": "keystone dev",
-    "keystone:build": "keystone build && keystone prisma migrate deploy",
-    "keystone:start": "keystone start"
+    "build": "keystone build && keystone prisma migrate deploy",
+    "start": "keystone start"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
