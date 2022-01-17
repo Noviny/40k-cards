@@ -233,17 +233,7 @@ const NecronStratagems = () => (
   </>
 );
 
-// const TauStratagems = () => (
-//   <>
-//     <StratagemCard stratagems={[tauStrats[0], tauStrats[1], tauStrats[2]]} />
-//     <StratagemCard stratagems={[tauStrats[3], tauStrats[4], tauStrats[5]]} />
-//     <StratagemCard stratagems={[tauStrats[16], tauStrats[17], tauStrats[15]]} />
-//     <StratagemCard stratagems={[tauStrats[6], tauStrats[7], tauStrats[14]]} />
-//     <StratagemCard stratagems={[tauStrats[7], tauStrats[8], tauStrats[13]]} />
-//     <StratagemCard stratagems={[tauStrats[9], tauStrats[10]]} />
-//     <StratagemCard stratagems={[tauStrats[11], tauStrats[12]]} />
-//   </>
-// );
+// co
 
 const PrimaryCard: FC<{ player1: string; player2: string }> = ({
   player1,

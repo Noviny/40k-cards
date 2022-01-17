@@ -1,12 +1,15 @@
 import { config, graphql, list } from "@keystone-6/core";
 import {
   integer,
+  password,
   relationship,
   select,
   text,
   virtual,
 } from "@keystone-6/core/fields";
 import { Lists } from ".keystone/types";
+import { DATABASE_URL, IS_IN_NEXT, PORT } from "./config";
+import { withAuth, session } from "./auth";
 
 const WeaponProfile: Lists.WeaponProfile = list({
   fields: {
@@ -134,11 +137,35 @@ const Rule = list({
   },
 });
 
-export default config({
-  db: { provider: "sqlite", url: "file:./app.db" },
-  experimental: {
-    generateNextGraphqlAPI: true,
-    generateNodeAPI: true,
+const User = list({
+  fields: {
+    name: text({ isIndexed: "unique", validation: { isRequired: true } }),
+    email: text({ isIndexed: "unique", validation: { isRequired: true } }),
+    password: password({ validation: { isRequired: true } }),
   },
-  lists: { WeaponProfile, UnitStat, Unit, Rule, Tag },
 });
+
+const keystone = IS_IN_NEXT
+  ? config({
+      db: { provider: "sqlite", useMigrations: true, url: "app.db" },
+      experimental: {
+        generateNextGraphqlAPI: true,
+        generateNodeAPI: true,
+      },
+      lists: { WeaponProfile, UnitStat, Unit, Rule, Tag, User },
+      server: { port: PORT },
+    })
+  : withAuth(
+      config({
+        db: { provider: "postgresql", useMigrations: true, url: DATABASE_URL },
+        experimental: {
+          generateNextGraphqlAPI: true,
+          generateNodeAPI: true,
+        },
+        lists: { WeaponProfile, UnitStat, Unit, Rule, Tag, User },
+        server: { port: PORT },
+        session,
+      })
+    );
+
+export default keystone;
