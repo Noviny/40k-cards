@@ -28,7 +28,7 @@ const Home: NextPage = () => {
 
       <main>
         <h1>An app for generating 40k cards</h1>
-        <div>loading: {rest.loading}</div>
+        <div>loading: {rest.loading.toString()}</div>
       </main>
     </div>
   );
