@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import "../styles/globals.css";
 
 const client = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_DB_URL,
+  uri: "/api/graphql",
   cache: new InMemoryCache(),
 });
 

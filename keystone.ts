@@ -155,7 +155,6 @@ const keystone = withAuth(
     lists: { WeaponProfile, UnitStat, Unit, Rule, Tag, User },
     server: {
       port: PORT,
-      cors: { origin: ["*"], credentials: true },
     },
     session,
   })

@@ -1,34 +1,24 @@
 {
   "version": "ts-gql-document-extractor@v3,@babel/parser@7.16.8",
-  "integrity": "__TS_GQL_INTEGRITY_dd3fbdd65a266952d3ad0c4e07ab4c18_TS_GQL_INTEGRITY__",
+  "integrity": "__TS_GQL_INTEGRITY_2580b1201444b47b171ddabc6dd4a28c_TS_GQL_INTEGRITY__",
   "cache": {
-    "/Users/noviny/Development/40k-cards/components/cards.tsx": {
-      "hash": "d1041654fa2cb31018859d95c44d08ad",
-      "errors": [],
-      "documents": []
-    },
-    "/Users/noviny/Development/40k-cards/config.ts": {
-      "hash": "d89c634a61ec7f1ffcf24f76d0d34576",
-      "errors": [],
-      "documents": []
-    },
-    "/Users/noviny/Development/40k-cards/auth.ts": {
-      "hash": "2c5396c8d1a7202e5d707dfad4f8acb0",
-      "errors": [],
-      "documents": []
-    },
-    "/Users/noviny/Development/40k-cards/keystone.ts": {
-      "hash": "a8bef5e25a238d56c292e62ffb99a298",
-      "errors": [],
-      "documents": []
-    },
     "/Users/noviny/Development/40k-cards/data/necrons.ts": {
       "hash": "c450f9120958f804f42b56536d661b07",
       "errors": [],
       "documents": []
     },
-    "/Users/noviny/Development/40k-cards/pages/_app.tsx": {
-      "hash": "5f2f8567f9f227d252b4ec93096d9695",
+    "/Users/noviny/Development/40k-cards/keystone.ts": {
+      "hash": "1e2da0aa54e8ae94317a4d6ff4b5406b",
+      "errors": [],
+      "documents": []
+    },
+    "/Users/noviny/Development/40k-cards/components/cards.tsx": {
+      "hash": "d1041654fa2cb31018859d95c44d08ad",
+      "errors": [],
+      "documents": []
+    },
+    "/Users/noviny/Development/40k-cards/auth.ts": {
+      "hash": "2c5396c8d1a7202e5d707dfad4f8acb0",
       "errors": [],
       "documents": []
     },
@@ -51,23 +41,13 @@
         }
       ]
     },
-    "/Users/noviny/Development/40k-cards/pages/player-cards.tsx": {
-      "hash": "cffab4393a610a91b8373139e3c8ba4e",
+    "/Users/noviny/Development/40k-cards/config.ts": {
+      "hash": "d89c634a61ec7f1ffcf24f76d0d34576",
       "errors": [],
       "documents": []
     },
-    "/Users/noviny/Development/40k-cards/data/tau.ts": {
-      "hash": "d5657242e7deb176608f5f6dad4d703f",
-      "errors": [],
-      "documents": []
-    },
-    "/Users/noviny/Development/40k-cards/pages/api/hello.ts": {
-      "hash": "a546ee6e68d199da5565dc561f68d7be",
-      "errors": [],
-      "documents": []
-    },
-    "/Users/noviny/Development/40k-cards/types.ts": {
-      "hash": "50981d99f9197c72b7f38cafa1373c18",
+    "/Users/noviny/Development/40k-cards/pages/_app.tsx": {
+      "hash": "b214282e2de69b08c3dd8fa017242c05",
       "errors": [],
       "documents": []
     },
@@ -76,13 +56,33 @@
       "errors": [],
       "documents": []
     },
-    "/Users/noviny/Development/40k-cards/__generated__/ts-gql/HomePage.ts": {
-      "hash": "423560b4a5e8543c253e86434f698732",
+    "/Users/noviny/Development/40k-cards/data/tau.ts": {
+      "hash": "d5657242e7deb176608f5f6dad4d703f",
+      "errors": [],
+      "documents": []
+    },
+    "/Users/noviny/Development/40k-cards/types.ts": {
+      "hash": "50981d99f9197c72b7f38cafa1373c18",
       "errors": [],
       "documents": []
     },
     "/Users/noviny/Development/40k-cards/__generated__/ts-gql/@introspection.ts": {
       "hash": "d53edfc094ecd8450eb79667785c93cd",
+      "errors": [],
+      "documents": []
+    },
+    "/Users/noviny/Development/40k-cards/__generated__/ts-gql/HomePage.ts": {
+      "hash": "423560b4a5e8543c253e86434f698732",
+      "errors": [],
+      "documents": []
+    },
+    "/Users/noviny/Development/40k-cards/pages/player-cards.tsx": {
+      "hash": "cffab4393a610a91b8373139e3c8ba4e",
+      "errors": [],
+      "documents": []
+    },
+    "/Users/noviny/Development/40k-cards/pages/api/hello.ts": {
+      "hash": "a546ee6e68d199da5565dc561f68d7be",
       "errors": [],
       "documents": []
     }
