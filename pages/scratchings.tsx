@@ -10,7 +10,9 @@ import { necronArmy, stratagems } from "../data/necrons";
 import { units as tauUnits, stratagems as tauStrats } from "../data/tau";
 import { UnitCardDetails, AbilityDetail } from "../types";
 
-const PrintSeparator = () => <div style={{ height: "2cm", width: "100%" }} />;
+export const PrintSeparator = () => (
+  <div style={{ height: "2cm", width: "100%" }} />
+);
 
 const ArmySummary = ({
   units,
@@ -137,7 +139,7 @@ const Protocols: Array<{
   },
 ];
 
-const NecronRules = () => (
+export const NecronRules = () => (
   <>
     <Card>
       <div style={{ textAlign: "center" }}>Dynasty</div>
@@ -181,7 +183,7 @@ const NecronRules = () => (
   </>
 );
 
-const Break = () => (
+export const Break = () => (
   <div
     style={{
       border: "0.5px solid black",
@@ -224,7 +226,7 @@ const TauRules = () => (
   </>
 );
 
-const NecronStratagems = () => (
+export const NecronStratagems = () => (
   <>
     <StratagemCard stratagems={[stratagems[0], stratagems[1]]} />
     <StratagemCard stratagems={[stratagems[2], stratagems[3]]} />
@@ -235,7 +237,7 @@ const NecronStratagems = () => (
 
 // co
 
-const PrimaryCard: FC<{ player1: string; player2: string }> = ({
+export const PrimaryCard: FC<{ player1: string; player2: string }> = ({
   player1,
   player2,
 }) => (

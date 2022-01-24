@@ -24,48 +24,6 @@ export const Card = ({ children }: { children: ReactNode }) => (
   </div>
 );
 
-const CardTop = ({
-  name,
-  M,
-  WS,
-  BS,
-  S,
-  A,
-}: { name: string } & AggressiveStats) => (
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      borderBottom: "1px solid black",
-      paddingBottom: 8,
-    }}
-  >
-    <h2 style={{ fontSize: "14px" }}>{name}</h2>
-    <Stats M={M} WS={WS} BS={BS} S={S} A={A} />
-  </div>
-);
-
-const CardTop2 = ({ name, role }: { name: string; role: string }) => (
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      borderBottom: "1px solid black",
-      paddingBottom: 8,
-    }}
-  >
-    <h2 style={{ fontSize: "14px" }}>{name}</h2>
-    <Image
-      src={`/${role}.svg`}
-      alt="Landscape picture"
-      height={28}
-      width={28}
-    />
-  </div>
-);
-
 const Stratagem = ({ name, phase, CP, text }: StratagemInfo) => (
   <div>
     <div
@@ -121,77 +79,76 @@ export const StratagemCard = ({
 
 export const UnitCard = ({
   name,
-  aggressiveStats,
   keywords,
   gear,
-  defensiveStats,
   weapons,
   abilities,
   role,
-}: UnitCardDetails) => (
-  <Card>
-    {/* <CardTop name={name} {...aggressiveStats} /> */}
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        borderBottom: "1px solid black",
-        paddingBottom: 8,
-      }}
-    >
-      <Image
-        src={`/${role}.svg`}
-        alt="Landscape picture"
-        height={28}
-        width={28}
-      />
-      <h2 style={{ fontSize: "14px" }}>{name}</h2>
-    </div>
-    {keywords && (
-      <div style={{ fontSize: 12, borderBottom: "1px solid black" }}>
-        <i>{keywords.join(", ")}</i>
-      </div>
-    )}
-    {gear && (
+  stats,
+}) => {
+  return (
+    <Card>
+      {/* <CardTop name={name} {...aggressiveStats} /> */}
       <div
         style={{
-          fontSize: "12px",
-          lineHeight: "14px",
-          borderBottom: "1px solid black",
-          paddingBottom: 8,
-          paddingTop: 8,
-        }}
-      >
-        <b>Gear:</b> {gear}
-      </div>
-    )}
-    {weapons && (
-      <div
-        style={{
-          fontSize: "12px",
-          lineHeight: "14px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
           borderBottom: "1px solid black",
           paddingBottom: 8,
         }}
       >
-        {weapons.map((props) => (
-          <Weapon key={props.name} {...props} />
-        ))}
+        <Image
+          src={`/${role}.svg`}
+          alt="Landscape picture"
+          height={28}
+          width={28}
+        />
+        <h2 style={{ fontSize: "14px" }}>{name}</h2>
       </div>
-    )}
-    {abilities &&
-      abilities.map((props) => <Ability key={props.name} {...props} />)}
-    <AllStats {...aggressiveStats} {...defensiveStats} />
-  </Card>
-);
+      {keywords && (
+        <div style={{ fontSize: 12, borderBottom: "1px solid black" }}>
+          <i>{keywords.map(({ name }) => name).join(", ")}</i>
+        </div>
+      )}
+      {gear && (
+        <div
+          style={{
+            fontSize: "12px",
+            lineHeight: "14px",
+            borderBottom: "1px solid black",
+            paddingBottom: 8,
+            paddingTop: 8,
+          }}
+        >
+          <b>Gear:</b> {gear}
+        </div>
+      )}
+      {weapons && (
+        <div
+          style={{
+            fontSize: "12px",
+            lineHeight: "14px",
+            borderBottom: "1px solid black",
+            paddingBottom: 8,
+          }}
+        >
+          {weapons.map((props) => (
+            <Weapon key={props.name} {...props} />
+          ))}
+        </div>
+      )}
+      {abilities &&
+        abilities.map((props) => <Ability key={props.name} {...props} />)}
+      <AllStats {...stats} />
+    </Card>
+  );
+};
 
-const Weapon = ({ name, line, details }: WeaponDetail) => (
+const Weapon = ({ name, profile, notes }) => (
   <div style={{ paddingTop: 8 }}>
-    <div>
-      <b>{name}:</b> {line}
-    </div>
-    {details && <div style={{ paddingLeft: 4 }}>{details}</div>}
+    <div>{profile}</div>
+    {notes && <div style={{ paddingLeft: 4 }}>{notes}</div>}
   </div>
 );
 export const Ability = ({ name, details }: AbilityDetail) => (
@@ -267,27 +224,29 @@ const AllStats = ({
   W,
   Ld,
   Sv,
-}: AggressiveStats & DefensiveStats) => (
-  <StatWrapper
-    style={{
-      marginLeft: "auto",
-      marginRight: "auto",
-      marginTop: "auto",
-      borderTop: "1px solid black",
-      paddingTop: 8,
-    }}
-  >
-    <Stat top="M" bottom={M} />
-    <Stat top="WS" bottom={WS} />
-    <Stat top="BS" bottom={BS} />
-    <Stat top="S" bottom={S} />
-    <Stat top="A" bottom={A} />
-    <Stat top="T" bottom={T} />
-    <Stat top="W" bottom={W} />
-    <Stat top="Ld" bottom={Ld} />
-    <Stat top="Sv" bottom={Sv} />
-  </StatWrapper>
-);
+}: AggressiveStats & DefensiveStats) => {
+  return (
+    <StatWrapper
+      style={{
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: "auto",
+        borderTop: "1px solid black",
+        paddingTop: 8,
+      }}
+    >
+      <Stat top="M" bottom={M} />
+      <Stat top="WS" bottom={WS} />
+      <Stat top="BS" bottom={BS} />
+      <Stat top="S" bottom={S} />
+      <Stat top="A" bottom={A} />
+      <Stat top="T" bottom={T} />
+      <Stat top="W" bottom={W} />
+      <Stat top="Ld" bottom={Ld} />
+      <Stat top="Sv" bottom={Sv} />
+    </StatWrapper>
+  );
+};
 
 export const LinedCard: FC<{ lines?: number }> = ({ children, lines = 15 }) => (
   <Card>

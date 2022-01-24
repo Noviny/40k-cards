@@ -24,6 +24,7 @@
     "@ts-gql/eslint-plugin": "^0.8.0",
     "@ts-gql/next": "^16.0.0",
     "@ts-gql/tag": "^0.6.0",
+    "dotenv": "^14.0.1",
     "graphql": "15",
     "next": "12.0.8",
     "react": "17.0.2",
@@ -37,6 +38,7 @@
     "typescript": "4.5.4"
   },
   "ts-gql": {
-    "schema": "./schema.graphql"
+    "schema": "./schema.graphql",
+    "mode": "no-transform"
   }
 }

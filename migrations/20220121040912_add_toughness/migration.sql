@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "UnitStat" ADD COLUMN     "T" TEXT NOT NULL DEFAULT E'';

@@ -1,5 +1,9 @@
 import { UnitCardDetails, StratagemInfo } from "../types";
 
+import { Lists } from ".keystone/types";
+
+type b = Lists.Unit.Item;
+
 const Overlord: UnitCardDetails = {
   name: "Overlord",
   keywords: ["character", "infantry", "noble", "warlord"],
@@ -158,7 +162,7 @@ export const stratagems: StratagemInfo[] = [
   {
     name: "Resurrection Protocols",
     CP: "1",
-    phase: "on death, infantry noble, OPB",
+    phase: "on death, infantry noble or cryptek, OPB",
     text: 'At end of phase, roll a d6, on a 4+, set the model back up within 1" of its death place with D3 wounds',
     faction: "Necrons",
     conditions: "",

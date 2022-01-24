@@ -43,11 +43,10 @@ export type UnitCardDetails = {
   points: number;
   weapons?: WeaponDetail[];
   abilities?: AbilityDetail[];
-  aggressiveStats: AggressiveStats;
-  defensiveStats: DefensiveStats;
   hide?: boolean;
   role: Role;
-};
+} & AggressiveStats &
+  DefensiveStats;
 
 export type Role =
   | "HQ"

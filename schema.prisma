@@ -30,8 +30,12 @@ model UnitStat {
   M     String @default("")
   WS    String @default("")
   BS    String @default("")
+  W     String @default("")
   S     String @default("")
+  T     String @default("")
   A     String @default("")
+  Sv    String @default("")
+  Ld    String @default("")
   units Unit[] @relation("Unit_stats")
 }
 
@@ -46,15 +50,19 @@ model Unit {
   points    Int
   abilities Rule[]          @relation("Unit_abilities")
   role      String
+  armies    ArmyList[]      @relation("ArmyList_units")
 
   @@index([statsId])
 }
 
 model Rule {
-  id                  String @id @default(cuid())
-  name                String @default("")
-  details             String @default("")
-  from_Unit_abilities Unit[] @relation("Unit_abilities")
+  id                      String     @id @default(cuid())
+  name                    String     @unique @default("")
+  displayName             String     @default("")
+  hideName                Boolean    @default(false)
+  details                 String     @default("")
+  from_Unit_abilities     Unit[]     @relation("Unit_abilities")
+  from_ArmyList_armyRules ArmyList[] @relation("ArmyList_armyRules")
 }
 
 model Tag {
@@ -68,4 +76,22 @@ model User {
   name     String @unique @default("")
   email    String @unique @default("")
   password String
+}
+
+model Stratagem {
+  id      String     @id @default(cuid())
+  name    String     @unique @default("")
+  armies  ArmyList[] @relation("ArmyList_stratagems")
+  details String     @default("")
+  CP      String     @default("")
+}
+
+model ArmyList {
+  id          String      @id @default(cuid())
+  name        String      @default("")
+  description String      @default("")
+  notes       String      @default("")
+  stratagems  Stratagem[] @relation("ArmyList_stratagems")
+  units       Unit[]      @relation("ArmyList_units")
+  armyRules   Rule[]      @relation("ArmyList_armyRules")
 }

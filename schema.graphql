@@ -157,8 +157,12 @@ type UnitStat {
   M: String
   WS: String
   BS: String
+  W: String
   S: String
+  T: String
   A: String
+  Sv: String
+  Ld: String
   statLine: String
   units(
     where: UnitWhereInput! = {}
@@ -183,8 +187,12 @@ input UnitStatWhereInput {
   M: StringFilter
   WS: StringFilter
   BS: StringFilter
+  W: StringFilter
   S: StringFilter
+  T: StringFilter
   A: StringFilter
+  Sv: StringFilter
+  Ld: StringFilter
   units: UnitManyRelationFilter
 }
 
@@ -194,8 +202,12 @@ input UnitStatOrderByInput {
   M: OrderDirection
   WS: OrderDirection
   BS: OrderDirection
+  W: OrderDirection
   S: OrderDirection
+  T: OrderDirection
   A: OrderDirection
+  Sv: OrderDirection
+  Ld: OrderDirection
 }
 
 input UnitStatUpdateInput {
@@ -203,8 +215,12 @@ input UnitStatUpdateInput {
   M: String
   WS: String
   BS: String
+  W: String
   S: String
+  T: String
   A: String
+  Sv: String
+  Ld: String
   units: UnitRelateToManyForUpdateInput
 }
 
@@ -218,8 +234,12 @@ input UnitStatCreateInput {
   M: String
   WS: String
   BS: String
+  W: String
   S: String
+  T: String
   A: String
+  Sv: String
+  Ld: String
   units: UnitRelateToManyForCreateInput
 }
 
@@ -251,6 +271,13 @@ type Unit {
   ): [Rule!]
   abilitiesCount(where: RuleWhereInput! = {}): Int
   role: String
+  armies(
+    where: ArmyListWhereInput! = {}
+    orderBy: [ArmyListOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [ArmyList!]
+  armiesCount(where: ArmyListWhereInput! = {}): Int
 }
 
 input UnitWhereUniqueInput {
@@ -271,6 +298,7 @@ input UnitWhereInput {
   points: IntFilter
   abilities: RuleManyRelationFilter
   role: StringFilter
+  armies: ArmyListManyRelationFilter
 }
 
 input WeaponProfileManyRelationFilter {
@@ -302,6 +330,12 @@ input RuleManyRelationFilter {
   none: RuleWhereInput
 }
 
+input ArmyListManyRelationFilter {
+  every: ArmyListWhereInput
+  some: ArmyListWhereInput
+  none: ArmyListWhereInput
+}
+
 input UnitOrderByInput {
   id: OrderDirection
   name: OrderDirection
@@ -319,6 +353,7 @@ input UnitUpdateInput {
   points: Int
   abilities: RuleRelateToManyForUpdateInput
   role: String
+  armies: ArmyListRelateToManyForUpdateInput
 }
 
 input UnitStatRelateToOneForUpdateInput {
@@ -348,6 +383,13 @@ input RuleRelateToManyForUpdateInput {
   connect: [RuleWhereUniqueInput!]
 }
 
+input ArmyListRelateToManyForUpdateInput {
+  disconnect: [ArmyListWhereUniqueInput!]
+  set: [ArmyListWhereUniqueInput!]
+  create: [ArmyListCreateInput!]
+  connect: [ArmyListWhereUniqueInput!]
+}
+
 input UnitUpdateArgs {
   where: UnitWhereUniqueInput!
   data: UnitUpdateInput!
@@ -362,6 +404,7 @@ input UnitCreateInput {
   points: Int
   abilities: RuleRelateToManyForCreateInput
   role: String
+  armies: ArmyListRelateToManyForCreateInput
 }
 
 input UnitStatRelateToOneForCreateInput {
@@ -384,14 +427,22 @@ input RuleRelateToManyForCreateInput {
   connect: [RuleWhereUniqueInput!]
 }
 
+input ArmyListRelateToManyForCreateInput {
+  create: [ArmyListCreateInput!]
+  connect: [ArmyListWhereUniqueInput!]
+}
+
 type Rule {
   id: ID!
   name: String
+  displayName: String
+  hideName: Boolean
   details: String
 }
 
 input RuleWhereUniqueInput {
   id: ID
+  name: String
 }
 
 input RuleWhereInput {
@@ -400,17 +451,28 @@ input RuleWhereInput {
   NOT: [RuleWhereInput!]
   id: IDFilter
   name: StringFilter
+  displayName: StringFilter
+  hideName: BooleanFilter
   details: StringFilter
+}
+
+input BooleanFilter {
+  equals: Boolean
+  not: BooleanFilter
 }
 
 input RuleOrderByInput {
   id: OrderDirection
   name: OrderDirection
+  displayName: OrderDirection
+  hideName: OrderDirection
   details: OrderDirection
 }
 
 input RuleUpdateInput {
   name: String
+  displayName: String
+  hideName: Boolean
   details: String
 }
 
@@ -421,6 +483,8 @@ input RuleUpdateArgs {
 
 input RuleCreateInput {
   name: String
+  displayName: String
+  hideName: Boolean
   details: String
 }
 
@@ -509,6 +573,155 @@ input UserCreateInput {
   password: String
 }
 
+type Stratagem {
+  id: ID!
+  name: String
+  armies(
+    where: ArmyListWhereInput! = {}
+    orderBy: [ArmyListOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [ArmyList!]
+  armiesCount(where: ArmyListWhereInput! = {}): Int
+  details: String
+  CP: String
+}
+
+input StratagemWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+input StratagemWhereInput {
+  AND: [StratagemWhereInput!]
+  OR: [StratagemWhereInput!]
+  NOT: [StratagemWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  armies: ArmyListManyRelationFilter
+  details: StringFilter
+  CP: StringFilter
+}
+
+input StratagemOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  details: OrderDirection
+  CP: OrderDirection
+}
+
+input StratagemUpdateInput {
+  name: String
+  armies: ArmyListRelateToManyForUpdateInput
+  details: String
+  CP: String
+}
+
+input StratagemUpdateArgs {
+  where: StratagemWhereUniqueInput!
+  data: StratagemUpdateInput!
+}
+
+input StratagemCreateInput {
+  name: String
+  armies: ArmyListRelateToManyForCreateInput
+  details: String
+  CP: String
+}
+
+type ArmyList {
+  id: ID!
+  name: String
+  description: String
+  notes: String
+  stratagems(
+    where: StratagemWhereInput! = {}
+    orderBy: [StratagemOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Stratagem!]
+  stratagemsCount(where: StratagemWhereInput! = {}): Int
+  units(
+    where: UnitWhereInput! = {}
+    orderBy: [UnitOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Unit!]
+  unitsCount(where: UnitWhereInput! = {}): Int
+  armyRules(
+    where: RuleWhereInput! = {}
+    orderBy: [RuleOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Rule!]
+  armyRulesCount(where: RuleWhereInput! = {}): Int
+}
+
+input ArmyListWhereUniqueInput {
+  id: ID
+}
+
+input ArmyListWhereInput {
+  AND: [ArmyListWhereInput!]
+  OR: [ArmyListWhereInput!]
+  NOT: [ArmyListWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  description: StringFilter
+  notes: StringFilter
+  stratagems: StratagemManyRelationFilter
+  units: UnitManyRelationFilter
+  armyRules: RuleManyRelationFilter
+}
+
+input StratagemManyRelationFilter {
+  every: StratagemWhereInput
+  some: StratagemWhereInput
+  none: StratagemWhereInput
+}
+
+input ArmyListOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  description: OrderDirection
+  notes: OrderDirection
+}
+
+input ArmyListUpdateInput {
+  name: String
+  description: String
+  notes: String
+  stratagems: StratagemRelateToManyForUpdateInput
+  units: UnitRelateToManyForUpdateInput
+  armyRules: RuleRelateToManyForUpdateInput
+}
+
+input StratagemRelateToManyForUpdateInput {
+  disconnect: [StratagemWhereUniqueInput!]
+  set: [StratagemWhereUniqueInput!]
+  create: [StratagemCreateInput!]
+  connect: [StratagemWhereUniqueInput!]
+}
+
+input ArmyListUpdateArgs {
+  where: ArmyListWhereUniqueInput!
+  data: ArmyListUpdateInput!
+}
+
+input ArmyListCreateInput {
+  name: String
+  description: String
+  notes: String
+  stratagems: StratagemRelateToManyForCreateInput
+  units: UnitRelateToManyForCreateInput
+  armyRules: RuleRelateToManyForCreateInput
+}
+
+input StratagemRelateToManyForCreateInput {
+  create: [StratagemCreateInput!]
+  connect: [StratagemWhereUniqueInput!]
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -562,6 +775,24 @@ type Mutation {
   updateUsers(data: [UserUpdateArgs!]!): [User]
   deleteUser(where: UserWhereUniqueInput!): User
   deleteUsers(where: [UserWhereUniqueInput!]!): [User]
+  createStratagem(data: StratagemCreateInput!): Stratagem
+  createStratagems(data: [StratagemCreateInput!]!): [Stratagem]
+  updateStratagem(
+    where: StratagemWhereUniqueInput!
+    data: StratagemUpdateInput!
+  ): Stratagem
+  updateStratagems(data: [StratagemUpdateArgs!]!): [Stratagem]
+  deleteStratagem(where: StratagemWhereUniqueInput!): Stratagem
+  deleteStratagems(where: [StratagemWhereUniqueInput!]!): [Stratagem]
+  createArmyList(data: ArmyListCreateInput!): ArmyList
+  createArmyLists(data: [ArmyListCreateInput!]!): [ArmyList]
+  updateArmyList(
+    where: ArmyListWhereUniqueInput!
+    data: ArmyListUpdateInput!
+  ): ArmyList
+  updateArmyLists(data: [ArmyListUpdateArgs!]!): [ArmyList]
+  deleteArmyList(where: ArmyListWhereUniqueInput!): ArmyList
+  deleteArmyLists(where: [ArmyListWhereUniqueInput!]!): [ArmyList]
   endSession: Boolean!
   authenticateUserWithPassword(
     email: String!
@@ -640,6 +871,22 @@ type Query {
   ): [User!]
   user(where: UserWhereUniqueInput!): User
   usersCount(where: UserWhereInput! = {}): Int
+  stratagems(
+    where: StratagemWhereInput! = {}
+    orderBy: [StratagemOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Stratagem!]
+  stratagem(where: StratagemWhereUniqueInput!): Stratagem
+  stratagemsCount(where: StratagemWhereInput! = {}): Int
+  armyLists(
+    where: ArmyListWhereInput! = {}
+    orderBy: [ArmyListOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [ArmyList!]
+  armyList(where: ArmyListWhereUniqueInput!): ArmyList
+  armyListsCount(where: ArmyListWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }

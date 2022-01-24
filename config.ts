@@ -1,10 +1,10 @@
-// 3000 is standard for node apps
-// Once deployed, Railway will supply this var to your app
+const dotenv = require("dotenv");
+const fs = require("fs");
+
+const config = dotenv.parse(fs.readFileSync(".env"));
+
 export const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 
-// Postgres DB URL
-// The default value here will work if you've installed Postgres on MacOS using brew
-// One the app is deployed to Railway, this var will be supplied by the Postgres plugin
 export const DATABASE_URL =
   process.env.DATABASE_URL ||
   `postgres://${process.env.USER}@localhost/40k-cards`;
@@ -19,6 +19,7 @@ export const SESSION_MAX_AGE = process.env.SESSION_MAX_AGE
 // A secure value will be set in your Railway deploy if you use the "Deploy on Railway" button or follow the instructions in the README
 export const SESSION_SECRET =
   process.env.SESSION_SECRET ||
+  config.SESSION_SECRET ||
   require("crypto")
     .randomBytes(32)
     .toString("base64")
