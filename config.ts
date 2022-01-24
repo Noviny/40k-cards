@@ -1,7 +1,12 @@
 const dotenv = require("dotenv");
 const fs = require("fs");
 
-const config = dotenv.parse(fs.readFileSync(".env"));
+let config = {};
+
+// we don't have a .env file in prod so fixing this so it doesn't crash
+try {
+  config = dotenv.parse(fs.readFileSync(".env"));
+} catch (e) {}
 
 export const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 
