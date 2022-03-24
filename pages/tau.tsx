@@ -79,6 +79,7 @@ const Something = () => {
             <UnitCard
               key={rest.name}
               {...rest}
+              /* @ts-ignore */
               abilities={
                 (abilities &&
                   Array.isArray(abilities?.connect) &&
@@ -87,6 +88,7 @@ const Something = () => {
                     .filter((a) => a)) ||
                 []
               }
+              /* @ts-ignore */
               weapons={
                 (weapons &&
                   Array.isArray(weapons.connect) &&
@@ -99,7 +101,9 @@ const Something = () => {
                     .filter((a) => a)) ||
                 []
               }
+              /* @ts-ignore */
               keywords={keywords?.connect || []}
+              /* @ts-ignore */
               stats={getStat(stats?.connect?.name)}
             />
           </span>
@@ -107,6 +111,7 @@ const Something = () => {
           <span key={rest.name}>
             <UnitCard
               {...rest}
+              /* @ts-ignore */
               abilities={
                 (abilities &&
                   Array.isArray(abilities?.connect) &&
@@ -115,6 +120,7 @@ const Something = () => {
                     .filter((a) => a)) ||
                 []
               }
+              /* @ts-ignore */
               weapons={
                 (weapons &&
                   Array.isArray(weapons.connect) &&
@@ -127,7 +133,9 @@ const Something = () => {
                     .filter((a) => a)) ||
                 []
               }
+              /* @ts-ignore */
               keywords={keywords?.connect || []}
+              /* @ts-ignore */
               stats={getStat(stats?.connect?.name)}
             />
             <PrintSeparator />
@@ -303,6 +311,7 @@ const Something = () => {
         ></div>
       </Card>
       <Card>
+        {/* @ts-ignore */}
         <Stratagem
           CP="1"
           name="Strike and Fade"
@@ -329,16 +338,19 @@ const Something = () => {
         />
       </Card>
       <Card>
+        {/* @ts-ignore */}
         <Stratagem
           CP="1"
           name="Repulsor Impact"
           text="A unit charging battlesuits gets -2 to their charge roll"
         />
+        {/* @ts-ignore */}
         <Stratagem
           CP="1"
           name="Photon Grenade"
           text="When a photon grenade unit is charged, the charger gets -2 to charge and -1 to hit (excluding vehicles and monsters"
         />
+        {/* @ts-ignore */}
         <Stratagem
           CP="1"
           name="Combat Debarkation"

@@ -1,7 +1,7 @@
 import React, { ReactNode, FC } from "react";
 import Image from "next/image";
 import { AbilityDetail, StratagemInfo, UnitCardDetails } from "../types";
-import { Rule, WeaponProfile } from "../__generated__/ts-gql/@schema";
+import { Rule, UnitStat, WeaponProfile } from "../__generated__/ts-gql/@schema";
 
 export const Card = ({ children }: { children: ReactNode }) => (
   <div
@@ -184,27 +184,7 @@ const StatWrapper = ({
   </div>
 );
 
-const Stats = ({ M, WS, BS, S, A }: AggressiveStats) => (
-  <StatWrapper style={{ borderLeft: "1px solid black", paddingLeft: 8 }}>
-    <Stat top="M" bottom={M} />
-    <Stat top="WS" bottom={WS} />
-    <Stat top="BS" bottom={BS} />
-    <Stat top="S" bottom={S} />
-    <Stat top="A" bottom={A} />
-  </StatWrapper>
-);
-
-const AllStats = ({
-  M,
-  WS,
-  BS,
-  S,
-  A,
-  T,
-  W,
-  Ld,
-  Sv,
-}: AggressiveStats & DefensiveStats) => {
+const AllStats = ({ M, WS, BS, S, A, T, W, Ld, Sv }: UnitStat) => {
   return (
     <StatWrapper
       style={{
@@ -215,15 +195,15 @@ const AllStats = ({
         paddingTop: 8,
       }}
     >
-      <Stat top="M" bottom={M} />
-      <Stat top="WS" bottom={WS} />
-      <Stat top="BS" bottom={BS} />
-      <Stat top="S" bottom={S} />
-      <Stat top="A" bottom={A} />
-      <Stat top="T" bottom={T} />
-      <Stat top="W" bottom={W} />
-      <Stat top="Ld" bottom={Ld} />
-      <Stat top="Sv" bottom={Sv} />
+      <Stat top="M" bottom={M!} />
+      <Stat top="WS" bottom={WS!} />
+      <Stat top="BS" bottom={BS!} />
+      <Stat top="S" bottom={S!} />
+      <Stat top="A" bottom={A!} />
+      <Stat top="T" bottom={T!} />
+      <Stat top="W" bottom={W!} />
+      <Stat top="Ld" bottom={Ld!} />
+      <Stat top="Sv" bottom={Sv!} />
     </StatWrapper>
   );
 };
@@ -243,7 +223,7 @@ export const OptionsCard = ({
   abilities,
   title,
 }: {
-  abilities: AbilityDetail[];
+  abilities: Rule[];
   title: string;
 }) => (
   <Card>

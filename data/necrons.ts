@@ -6,19 +6,23 @@ type b = Lists.Unit.Item;
 
 const Overlord: UnitCardDetails = {
   name: "Overlord",
+  // @ts-ignore
   keywords: ["character", "infantry", "noble", "warlord"],
   aggressiveStats: { M: '6"', WS: "2+", BS: "2+", S: "5", A: "4" },
   defensiveStats: { T: "5", W: "5", Ld: "10", Sv: "3+/4++" },
   abilities: [
+    // @ts-ignore
     {
       name: "My Will Be Done",
       details:
         'Command phase: select a core unit within 9", until your next command phase, +1 to hit with them',
     },
+    // @ts-ignore
     {
       name: "Relentless March",
       details: 'Core units within 6" get +1" to move and advance',
     },
+    // @ts-ignore
     {
       name: "Implacable Conqueror",
       details: 'Core units within 6" can reroll charge rolls',
@@ -35,7 +39,9 @@ const Overlord: UnitCardDetails = {
     // },
   ],
   weapons: [
+    // @ts-ignore
     { name: "Staff of Light(melee)", line: "melee user -2 1" },
+    // @ts-ignore
     { name: "Staff of Light(ranged)", line: '18" assualt 3 5 -2 1' },
   ],
   points: 125,
@@ -45,15 +51,18 @@ const Overlord: UnitCardDetails = {
 const Warden: UnitCardDetails = {
   name: "Necron Warden",
   gear: "10x Necron Warriors",
+  // @ts-ignore
   keywords: ["infantry", "core"],
   aggressiveStats: { M: '5"', WS: "3+", BS: "3+", S: "4", A: "1" },
   defensiveStats: { T: "4", W: "1", Ld: "10", Sv: "4+" },
   abilities: [
+    // @ts-ignore
     {
       name: "Their Number is Legion",
       details: "Re-roll reanimation protocol rolls of 1 for this unit",
     },
   ],
+  // @ts-ignore
   weapons: [{ name: "Gauss Flayer", line: '24" Rapid Fire 1, 4 -1 1' }],
   points: 130,
   role: "Troop",
@@ -62,38 +71,41 @@ const Warden: UnitCardDetails = {
 const Warriors: UnitCardDetails = {
   name: "Necron Warriors",
   gear: "10x Necron Warriors",
+  // @ts-ignore
   keywords: ["infantry", "core"],
   aggressiveStats: { M: '5"', WS: "3+", BS: "3+", S: "4", A: "1" },
   defensiveStats: { T: "4", W: "1", Ld: "10", Sv: "4+" },
   abilities: [
+    // @ts-ignore
     {
       name: "Their Number is Legion",
       details: "Re-roll reanimation protocol rolls of 1 for this unit",
     },
-  ],
+  ], // @ts-ignore
   weapons: [{ name: "Gauss Flayer", line: '24" Rapid Fire 1, 4 -1 1' }],
   points: 130,
   role: "Troop",
 };
 
 const warriors2: UnitCardDetails = {
-  ...Warriors,
+  ...Warriors, // @ts-ignore
   weapons: [{ name: "Gauss Reaper", line: '12" Assault 2, 5 -2 1 ' }],
 };
 
 const Lychguard: UnitCardDetails = {
   name: "Lychguard",
-  gear: "5x Lychguard",
+  gear: "5x Lychguard", // @ts-ignore
   keywords: ["infantry", "core"],
   aggressiveStats: { M: '5"', WS: "3+", BS: "3+", S: "5", A: "3" },
   defensiveStats: { T: "5", W: "3", Ld: "10", Sv: "3+/4++" },
   abilities: [
+    // @ts-ignore
     {
       name: "Guardian Protocols",
       details:
         'While a friendly <DYNASTY> INFANTRY NOBLE or DYNASTIC AGENT INFANTRY NOBLE unit is within 3" of this unit, enemy units cannot target that unit with ranged weapons.',
     },
-  ],
+  ], // @ts-ignore
   weapons: [{ name: "Gauss Flayer", line: '24" Rapid Fire 1 4 -1 1' }],
   points: 140,
   role: "Elite",
@@ -101,11 +113,13 @@ const Lychguard: UnitCardDetails = {
 
 const skorpekhDestroyers: UnitCardDetails = {
   name: "Skorpekh Destroyers",
+  // @ts-ignore
   keywords: ["infantry", "core"],
   gear: "2x hyperphase thresher, 1x hyperphase reap-blade",
   aggressiveStats: { M: '8"', WS: "3+", BS: "3+", S: "5", A: "3" },
   defensiveStats: { T: "5", W: "3", Ld: "10", Sv: "3+" },
   abilities: [
+    // @ts-ignore
     {
       name: "Hardwired for Destruction",
       details: "Each time this model makes an attack, re-roll a hit roll of 1.",
@@ -113,13 +127,13 @@ const skorpekhDestroyers: UnitCardDetails = {
   ],
   weapons: [
     {
-      name: "hyperphase thresher",
+      name: "hyperphase thresher", // @ts-ignore
       line: "melee User -3 2",
       details:
         "Each time the bearer fights, it makes 1 additional attack with this weapon.",
     },
     {
-      name: "hyperphase reap-blade",
+      name: "hyperphase reap-blade", // @ts-ignore
       line: "melee +2 -4 3",
     },
   ],

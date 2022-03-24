@@ -143,10 +143,12 @@ export const NecronRules = () => (
   <>
     <Card>
       <div style={{ textAlign: "center" }}>Dynasty</div>
+      {/* @ts-ignore */}
       <Ability
         name="Eternal Conquerors"
         details="Units with this code have the Objective Secured ability. If a model in such a unit already has this ability, that model counts as one additional model when determining control of an objective marker."
       />
+      {/* @ts-ignore */}
       <Ability
         name="Relentlessly Expansionist"
         details={
@@ -155,24 +157,29 @@ export const NecronRules = () => (
       />
     </Card>
     {Protocols.map((protocol) => (
+      // @ts-ignore
       <OptionsCard key={protocol.title} {...protocol} />
     ))}
     <Card>
       <div>Random Rules</div>
+      {/* @ts-ignore */}
       <Ability
         name="Command Protocols"
         details="After deployment, before 1st turn is determined, order 5 of 6 protocols. On each turn, enact the next protocol, picking either option."
       />
+      {/* @ts-ignore */}
       <Ability
         name="Reanimation Protocols"
         details="After a unit is shot or fought, it begins to reanimate. Anything killed by that fight rolls a d6 for each wound of dead models. If you get 5+s equal to the wounds of a model, that model reanimates."
       />
+      {/* @ts-ignore */}
       <Ability
         name="Veil of Darkness"
         details={
           'Once per battle, in the movement phase, teleport Overlord and 1 core unit within 3" and set up as deep strike within 3" of each other'
         }
       />
+      {/* @ts-ignore */}
       <Ability
         name="Resurrection Orb"
         details={
@@ -198,24 +205,32 @@ const TauRules = () => (
   <>
     <Card>
       <div style={{ textAlign: "center" }}>Firesight Enclaves</div>
+      {/* @ts-ignore */}
       <Ability
         name="Aggressive Footing"
         details={
           'Shooting a unit within 12" treat the target as having one markerlight'
         }
       />
+      {/* @ts-ignore */}
       <Ability
         name="Devastating Counter-strike"
         details={'Shooting a unit within 6" reroll wound rolls of 1'}
       />
       <Break />
       <div style={{ textAlign: "center" }}>Markerlights</div>
+      {/* @ts-ignore */}
       <Ability name="1" details="Reroll hit rolls of 1" />
+      {/* @ts-ignore */}
       <Ability name="2" details="-" />
+      {/* @ts-ignore */}
       <Ability name="3" details="no cover saving throw bonuses" />
+      {/* @ts-ignore */}
       <Ability name="4" details="-" />
+      {/* @ts-ignore */}
       <Ability name="5" details="+1 to hit" />
       <Break />
+      {/* @ts-ignore */}
       <Ability
         name="For the Greater Good"
         details={

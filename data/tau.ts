@@ -172,6 +172,7 @@ const getStrikeTeam = (overwrites: Partial<UnitCardDetails>) => ({
 
 const SMS: WeaponDetail = {
   name: "Smart Missile System",
+  // @ts-ignore
   line: '30" heavy 4 5 0 1',
   details: "ignores line-of-sight and saving throws from cover",
 };

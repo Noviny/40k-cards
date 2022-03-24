@@ -82,7 +82,7 @@ const Home: NextPage = () => {
 
   const { data, error, loading } = useQuery(armyQuery, {
     variables: {
-      id: router.query.id!,
+      id: router.query.id! as string,
     },
   });
 
@@ -95,6 +95,7 @@ const Home: NextPage = () => {
   return (
     <PageWrapper>
       {data?.armyList?.units?.map((unit) => (
+        // @ts-ignore
         <UnitCard {...unit} key={unit.name} />
       ))}
       <Card>

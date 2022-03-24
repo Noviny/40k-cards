@@ -397,17 +397,17 @@ const units: UnitCreateInput[] = [
     points: 75,
     role: "HQ",
   },
-  {
-    name: "Necron Warriors (flayers)",
-    ...warriorBase,
-    weapons: { connect: [{ name: "Gauss Flayer" }] },
-  },
-  {
-    name: "Necron Warriors (reapers)",
-    ...warriorBase,
-    weapons: { connect: [{ name: "Gauss Reaper" }] },
-    points: 260,
-  },
+  // {
+  //   name: "Necron Warriors (flayers)",
+  //   ...warriorBase,
+  //   weapons: { connect: [{ name: "Gauss Flayer" }] },
+  // },
+  // {
+  //   name: "Necron Warriors (reapers)",
+  //   ...warriorBase,
+  //   weapons: { connect: [{ name: "Gauss Reaper" }] },
+  //   points: 260,
+  // },
   {
     name: "Lychguard",
     stats: { connect: { name: "Lychguard" } },
@@ -446,89 +446,89 @@ const units: UnitCreateInput[] = [
 
 const stratagems: StratagemCreateInput[] = [];
 
-const converter = async (
-  {
-    name,
-    keywords,
-    aggressiveStats,
-    defensiveStats,
-    points,
-    role,
-    abilities,
-    gear,
-    hide,
-    weapons,
-  }: UnitCardDetails,
-  context: KeystoneContext
-): Promise<UnitCreateInput> => {
-  let keywordsQuery = {
-    create: [],
-    connect: [],
-  };
+// const converter = async (
+//   {
+//     name,
+//     keywords,
+//     aggressiveStats,
+//     defensiveStats,
+//     points,
+//     role,
+//     abilities,
+//     gear,
+//     hide,
+//     weapons,
+//   }: UnitCardDetails,
+//   context: KeystoneContext
+// ): Promise<UnitCreateInput> => {
+//   let keywordsQuery = {
+//     create: [],
+//     connect: [],
+//   };
 
-  if (keywords) {
-    for (const keyword of keywords) {
-      let kw = await context.query.Tag.findOne({
-        where: { name: keyword },
-      });
+//   if (keywords) {
+//     for (const keyword of keywords) {
+//       let kw = await context.query.Tag.findOne({
+//         where: { name: keyword },
+//       });
 
-      if (kw) {
-        keywordsQuery.connect.push({ name: keyword });
-      } else {
-        keywordsQuery.create.push({ name: keyword });
-      }
-    }
-  }
+//       if (kw) {
+//         keywordsQuery.connect.push({ name: keyword });
+//       } else {
+//         keywordsQuery.create.push({ name: keyword });
+//       }
+//     }
+//   }
 
-  let abilitiesQuery = {
-    create: [],
-    connect: [],
-  };
+//   let abilitiesQuery = {
+//     create: [],
+//     connect: [],
+//   };
 
-  if (abilities) {
-    for (const keyword of abilities) {
-      let kw = await context.query.Tag.findOne({
-        where: { name: keyword },
-      });
+//   if (abilities) {
+//     for (const keyword of abilities) {
+//       let kw = await context.query.Tag.findOne({
+//         where: { name: keyword },
+//       });
 
-      if (kw) {
-        abilitiesQuery.connect.push({ name: keyword });
-      } else {
-        abilitiesQuery.create.push({ name: keyword });
-      }
-    }
-  }
+//       if (kw) {
+//         abilitiesQuery.connect.push({ name: keyword });
+//       } else {
+//         abilitiesQuery.create.push({ name: keyword });
+//       }
+//     }
+//   }
 
-  let weaponsQuery = {
-    create: [],
-    connect: [],
-  };
+//   let weaponsQuery = {
+//     create: [],
+//     connect: [],
+//   };
 
-  if (weapons) {
-    for (const keyword of weapons) {
-      let kw = await context.query.Tag.findOne({
-        where: { name: keyword },
-      });
+//   if (weapons) {
+//     for (const keyword of weapons) {
+//       let kw = await context.query.Tag.findOne({
+//         where: { name: keyword },
+//       });
 
-      if (kw) {
-        weaponsQuery.connect.push({ name: keyword });
-      } else {
-        weaponsQuery.create.push({ name: keyword });
-      }
-    }
-  }
+//       if (kw) {
+//         weaponsQuery.connect.push({ name: keyword });
+//       } else {
+//         weaponsQuery.create.push({ name: keyword });
+//       }
+//     }
+//   }
 
-  return {
-    name,
-    keywords: keywordsQuery,
-    ...aggressiveStats,
-    ...defensiveStats,
-    points,
-    role,
-    abilities: abilitiesQuery,
-    weapons: weaponsQuery,
-  };
-};
+//   return {
+//     name,
+//     keywords: keywordsQuery,
+//     ...aggressiveStats,
+//     ...defensiveStats,
+//     points,
+//     role,
+//     abilities: abilitiesQuery,
+//     weapons: weaponsQuery,
+//   };
+// };
 
 const createTags = async (data: TagCreateInput, context: KeystoneContext) => {
   await context.query.Tag.createMany({ data: tags });
