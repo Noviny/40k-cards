@@ -270,7 +270,7 @@ type Unit {
     skip: Int! = 0
   ): [Rule!]
   abilitiesCount(where: RuleWhereInput! = {}): Int
-  role: String
+  role: UnitRoleType
   armies(
     where: ArmyListWhereInput! = {}
     orderBy: [ArmyListOrderByInput!]! = []
@@ -278,6 +278,18 @@ type Unit {
     skip: Int! = 0
   ): [ArmyList!]
   armiesCount(where: ArmyListWhereInput! = {}): Int
+}
+
+enum UnitRoleType {
+  HQ
+  Flyer
+  Elite
+  Troop
+  Drone
+  Transport
+  Heavy
+  Fast
+  misc
 }
 
 input UnitWhereUniqueInput {
@@ -297,7 +309,7 @@ input UnitWhereInput {
   keywords: TagManyRelationFilter
   points: IntFilter
   abilities: RuleManyRelationFilter
-  role: StringFilter
+  role: UnitRoleTypeNullableFilter
   armies: ArmyListManyRelationFilter
 }
 
@@ -330,6 +342,13 @@ input RuleManyRelationFilter {
   none: RuleWhereInput
 }
 
+input UnitRoleTypeNullableFilter {
+  equals: UnitRoleType
+  in: [UnitRoleType!]
+  notIn: [UnitRoleType!]
+  not: UnitRoleTypeNullableFilter
+}
+
 input ArmyListManyRelationFilter {
   every: ArmyListWhereInput
   some: ArmyListWhereInput
@@ -352,7 +371,7 @@ input UnitUpdateInput {
   keywords: TagRelateToManyForUpdateInput
   points: Int
   abilities: RuleRelateToManyForUpdateInput
-  role: String
+  role: UnitRoleType
   armies: ArmyListRelateToManyForUpdateInput
 }
 
@@ -403,7 +422,7 @@ input UnitCreateInput {
   keywords: TagRelateToManyForCreateInput
   points: Int
   abilities: RuleRelateToManyForCreateInput
-  role: String
+  role: UnitRoleType
   armies: ArmyListRelateToManyForCreateInput
 }
 

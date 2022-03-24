@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 const fs = require("fs");
 
-let config = {};
+let config: { SESSION_SECRET?: string } = {};
 
 // we don't have a .env file in prod so fixing this so it doesn't crash
 try {

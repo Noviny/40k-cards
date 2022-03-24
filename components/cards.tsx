@@ -1,13 +1,7 @@
 import React, { ReactNode, FC } from "react";
 import Image from "next/image";
-import {
-  AbilityDetail,
-  AggressiveStats,
-  DefensiveStats,
-  StratagemInfo,
-  UnitCardDetails,
-  WeaponDetail,
-} from "../types";
+import { AbilityDetail, StratagemInfo, UnitCardDetails } from "../types";
+import { Rule, WeaponProfile } from "../__generated__/ts-gql/@schema";
 
 export const Card = ({ children }: { children: ReactNode }) => (
   <div
@@ -24,7 +18,7 @@ export const Card = ({ children }: { children: ReactNode }) => (
   </div>
 );
 
-const Stratagem = ({ name, phase, CP, text }: StratagemInfo) => (
+export const Stratagem = ({ name, phase, CP, text }: StratagemInfo) => (
   <div>
     <div
       style={{
@@ -83,9 +77,10 @@ export const UnitCard = ({
   gear,
   weapons,
   abilities,
+  details,
   role,
   stats,
-}) => {
+}: UnitCardDetails) => {
   return (
     <Card>
       {/* <CardTop name={name} {...aggressiveStats} /> */}
@@ -111,6 +106,7 @@ export const UnitCard = ({
           <i>{keywords.map(({ name }) => name).join(", ")}</i>
         </div>
       )}
+      {details && <div style={{ fontSize: 12 }}>{details}</div>}
       {gear && (
         <div
           style={{
@@ -145,34 +141,18 @@ export const UnitCard = ({
   );
 };
 
-const Weapon = ({ name, profile, notes }) => (
+const Weapon = ({ name, profile, notes }: WeaponProfile) => (
   <div style={{ paddingTop: 8 }}>
-    <div>{profile}</div>
+    <div>
+      <b>{name}:</b> {profile}
+    </div>
     {notes && <div style={{ paddingLeft: 4 }}>{notes}</div>}
   </div>
 );
-export const Ability = ({ name, details }: AbilityDetail) => (
+export const Ability = ({ name, details }: Rule) => (
   <div style={{ paddingTop: 8, fontSize: 12 }}>
     <b>{name}:</b> {details}
   </div>
-);
-
-const Defence = ({ T, W, Ld, Sv }: DefensiveStats) => (
-  <StatWrapper
-    style={{
-      marginLeft: "auto",
-      marginTop: "auto",
-      borderTop: "1px solid black",
-      paddingTop: 8,
-      paddingLeft: 8,
-      borderLeft: "1px solid black",
-    }}
-  >
-    <Stat top="T" bottom={T} />
-    <Stat top="W" bottom={W} />
-    <Stat top="Ld" bottom={Ld} />
-    <Stat top="Sv" bottom={Sv} />
-  </StatWrapper>
 );
 
 const Stat = ({ top, bottom }: { top: string; bottom: string }) => (
@@ -253,7 +233,7 @@ export const LinedCard: FC<{ lines?: number }> = ({ children, lines = 15 }) => (
     {children}
     {new Array(lines).fill(1).map((_, i) => (
       <div key={i} style={{ borderBottom: "1px solid black" }}>
-        :
+        {"."}
       </div>
     ))}
   </Card>

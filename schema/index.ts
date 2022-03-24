@@ -129,7 +129,11 @@ const Unit: Lists.Unit = list({
         },
       },
     }),
-    role: select({ options: roles, validation: { isRequired: true } }),
+    role: select({
+      options: roles,
+      validation: { isRequired: true },
+      type: "enum",
+    }),
     armies: relationship({ ref: "ArmyList.units", many: true }),
   },
 });

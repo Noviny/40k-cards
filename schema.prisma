@@ -49,7 +49,7 @@ model Unit {
   keywords  Tag[]           @relation("Unit_keywords")
   points    Int
   abilities Rule[]          @relation("Unit_abilities")
-  role      String
+  role      UnitRoleType
   armies    ArmyList[]      @relation("ArmyList_units")
 
   @@index([statsId])
@@ -94,4 +94,16 @@ model ArmyList {
   stratagems  Stratagem[] @relation("ArmyList_stratagems")
   units       Unit[]      @relation("ArmyList_units")
   armyRules   Rule[]      @relation("ArmyList_armyRules")
+}
+
+enum UnitRoleType {
+  HQ
+  Flyer
+  Elite
+  Troop
+  Drone
+  Transport
+  Heavy
+  Fast
+  misc
 }
