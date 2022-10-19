@@ -438,7 +438,7 @@ export const statBlocks: UnitStatCreateInput[] = [
 
 export const units: UnitCreateInput[] = [
   {
-    name: "Coldstar Commander (1)",
+    name: "Coldstar Commander",
     points: 160,
     role: "HQ",
     keywords: {
@@ -475,46 +475,46 @@ export const units: UnitCreateInput[] = [
       ],
     },
   },
+  // {
+  //   name: "Coldstar Commander (2)",
+  //   points: 160,
+  //   role: "HQ",
+  //   keywords: {
+  //     connect: [
+  //       { name: "infantry" },
+  //       { name: "fly" },
+  //       { name: "character" },
+  //       { name: "tau" },
+  //       { name: "battlesuit" },
+  //       { name: "jet-pack" },
+  //       { name: "warlord" },
+  //     ],
+  //   },
+  //   abilities: {
+  //     connect: [
+  //       { name: "Precision of the Hunter" },
+  //       { name: "Master of War,High Altitude Manouevres,Aggressive Tactics" },
+  //       // { name: "High-altitude Manoeuvres" },
+  //       // { name: "Master of War" },
+  //       { name: "Shield Generator" },
+  //       { name: "Target Lock" },
+  //     ],
+  //   },
+  //   stats: {
+  //     connect: { name: "Coldstar Commander" },
+  //   },
+  //   // weapons: {
+  //   //   connect: [
+  //   //     { name: "Fusion Blaster" },
+  //   //     { name: "High-output Burst Cannon" },
+  //   //     { name: "Thermoneutronic Projector" },
+  //   //     { name: "Thermoneutronic Projector (melee)" },
+  //   //     { name: "Onager Gauntlet" },
+  //   //   ],
+  //   // },
+  // },
   {
-    name: "Coldstar Commander (2)",
-    points: 160,
-    role: "HQ",
-    keywords: {
-      connect: [
-        { name: "infantry" },
-        { name: "fly" },
-        { name: "character" },
-        { name: "tau" },
-        { name: "battlesuit" },
-        { name: "jet-pack" },
-        { name: "warlord" },
-      ],
-    },
-    abilities: {
-      connect: [
-        { name: "Precision of the Hunter" },
-        { name: "Master of War,High Altitude Manouevres,Aggressive Tactics" },
-        // { name: "High-altitude Manoeuvres" },
-        // { name: "Master of War" },
-        { name: "Shield Generator" },
-        { name: "Target Lock" },
-      ],
-    },
-    stats: {
-      connect: { name: "Coldstar Commander" },
-    },
-    // weapons: {
-    //   connect: [
-    //     { name: "Fusion Blaster" },
-    //     { name: "High-output Burst Cannon" },
-    //     { name: "Thermoneutronic Projector" },
-    //     { name: "Thermoneutronic Projector (melee)" },
-    //     { name: "Onager Gauntlet" },
-    //   ],
-    // },
-  },
-  {
-    name: "Ethereal (on hover drone) +2 marker drones",
+    name: "Ethereal",
     points: 85,
     role: "HQ",
     keywords: {

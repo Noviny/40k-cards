@@ -18,6 +18,21 @@ export const Card = ({ children }: { children: ReactNode }) => (
   </div>
 );
 
+export const OtherCard = ({ children }: { children: ReactNode }) => (
+  <div
+    style={{
+      border: "2px solid black",
+      height: "7.4cm",
+      width: "10.5cm",
+      padding: 16,
+      display: "flex",
+      flexDirection: "column",
+    }}
+  >
+    {children}
+  </div>
+);
+
 export const Stratagem = ({ name, phase, CP, text }: StratagemInfo) => (
   <div>
     <div
@@ -184,7 +199,7 @@ const StatWrapper = ({
   </div>
 );
 
-const AllStats = ({ M, WS, BS, S, A, T, W, Ld, Sv }: UnitStat) => {
+export const AllStats = ({ M, WS, BS, S, A, T, W, Ld, Sv }: UnitStat) => {
   return (
     <StatWrapper
       style={{
